@@ -10,6 +10,7 @@ const ChatHeader = props => {
   
   useEffect(() => {
     props.setUser();
+    displayRenameModal();
     document.querySelector('.backdrop').addEventListener('click', closeModal);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -64,10 +65,14 @@ const ChatHeader = props => {
         </div>
       </div>
       <h3>Chats</h3>
-      <h4
-        onClick={displayRenameModal}
-      >
-        {`Hello, ${userName}`}
+      <h4>
+        Hello,
+        &nbsp;
+        <span
+          onClick={displayRenameModal}
+        >
+          {props.userName}
+        </span>
       </h4>
       <p>(Click the username to update it)</p>
     </div>
