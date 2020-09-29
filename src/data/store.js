@@ -1,0 +1,49 @@
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import io from 'socket.io-client';
+
+import { postMessage } from './actions';
+import reducer from './reducers';
+
+const logger = (store) => (next) => (action) => {
+  console.log('dispatching', action);
+  let result = next(action);
+  console.log('next state', store.getState());
+  return result;
+};
+
+let socket;
+
+const configureStore = () => {
+  if (!socket) {
+    socket = io(':3001');
+
+    socket.on('chat message', msg => {
+      let {
+        id,
+        message,
+        topicId,
+        userName,
+      } = msg;
+
+      updateChat(userName, id, message, topicId);
+    });
+  }
+
+  return createStore(reducer, applyMiddleware(logger, thunk));
+};
+
+let store = configureStore();
+
+const sendMessage = (value) => {
+  socket.emit('chat message', value);
+}
+
+const updateChat = (userName, id, message, topicId) => {
+  store.dispatch(postMessage(userName, id, message, topicId));
+};
+
+export {
+  store,
+  sendMessage,
+};

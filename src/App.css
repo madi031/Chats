@@ -1,38 +1,133 @@
-.App {
+#root {
+  background-color: #eee !important;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.root {
+  background-color: #eee !important;
+  flex-grow: 1;
+}
+
+.paper {
+  background-color: #eee !important;
+  color: #666 !important;
+  flex: 1;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.chatHeader h3 {
+  background-color: #eee !important;
+  color: #666 !important;
+  margin-bottom: 0;
+  padding-bottom: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.chatHeader h4 {
+  background-color: #eee !important;
+  color: #666 !important;
+  cursor: pointer;
+  margin: 0;
+  padding-bottom: 5px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.chatHeader p {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin: 0;
+  padding-bottom: 20px;
+}
+
+.topicWindow {
+  border-radius: 0 !important;
+  border-right: 1px solid #666;
+  box-shadow: none !important;
+  max-height: 72vh;
+  min-height: 72vh;
+  overflow: auto;
+  padding-right: 0;
+}
+
+.chatWindow {
+  box-shadow: none !important;
+  max-height: 72vh;
+  min-height: 72vh;
+  overflow: auto;
+  padding-left: 0;
+}
+
+.messageInputContainer {
+  background-color: #eee !important;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.messageInput {
+  background-color: #eee !important;
+  color: #666 !important;
+  width: 100%;
 }
 
-@keyframes App-logo-spin {
+.activeTopic span {
+  font-weight: 600 !important;
+}
+
+.chatText {
+  color: #414042 !important;
+}
+
+.sender {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.renameModal {
+  animation-duration: 0.6s;
+  animation-name: slideIn;
+  background-color: #eee;
+  border-radius: 6px;
+  display: flex;
+  left: 30%;
+  padding: 10px;
+  position: fixed;
+  top: 10%;
+  width: 40%;
+}
+
+.userNameInput {
+  margin-right: 20px !important;
+  width: 100%;
+}
+
+@keyframes slideIn {
   from {
-    transform: rotate(0deg);
+    top: -10%;
   }
   to {
-    transform: rotate(360deg);
+    top: 10%;
   }
+}
+
+.footer {
+  bottom: 0;
+  left: 0;
+  padding: 0 !important;
+  position: absolute;
+  width: 100%;
+}
+
+.noChats {
+  font-style: italic;
+  text-align: center;
 }
