@@ -16,7 +16,10 @@ let socket;
 
 const configureStore = () => {
   if (!socket) {
-    socket = io(':3001');
+    let url = window.location.hostname === 'localhost'
+      ? ':3001'
+      : 'https://madi-chats.herokuapp.com/';
+    socket = io(url);
 
     socket.on('chat message', msg => {
       let {
