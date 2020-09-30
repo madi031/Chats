@@ -115,6 +115,13 @@
   width: 100%;
 }
 
+@media only screen and (max-width: 500px) {
+  .modal {
+    left: 0;
+    width: 100%;
+  }
+}
+
 @keyframes slideIn {
   from {
     top: -10%;
@@ -147,7 +154,7 @@
 }
 
 .newTopicButton {
-  padding: 0;
+  padding: 0 !important;
 }
 
 .topics {
