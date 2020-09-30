@@ -12,6 +12,10 @@ const ChatHeader = props => {
     props.setUser();
     displayRenameModal();
     document.querySelector('.backdrop').addEventListener('click', closeModal);
+
+    return () => {
+      document.querySelector('.backdrop').removeEventListener('click');
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -48,8 +52,9 @@ const ChatHeader = props => {
   return (
     <div className='chatHeader'>
       <div className='backdrop'>
-        <div className='renameModal'>
+        <div className='modal'>
           <TextField
+            autoFocus
             className='userNameInput'
             label='Enter your name here...'
             value={userName}

@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 
 import {
+  ADD_CHANNEL,
   GET_CHANNELS,
   GET_CHATS,
   POST_MESSAGE,
@@ -23,6 +24,14 @@ const reducer = (
   action
 ) => {
   switch (action.type) {
+    case ADD_CHANNEL:
+      return {
+        ...state,
+        channels: [
+          ...state.channels,
+          action.payload,
+        ],
+      };
     case GET_CHANNELS:
       let channels = [
         ...state.channels,

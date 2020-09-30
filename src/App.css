@@ -12,21 +12,21 @@
 
 .paper {
   background-color: #eee !important;
-  color: #666 !important;
+  color: #414042 !important;
   flex: 1;
   text-align: center;
 }
 
 .chatHeader h3 {
   background-color: #eee !important;
-  color: #666 !important;
+  color: #414042 !important;
   margin-bottom: 0;
   padding-bottom: 10px;
 }
 
 .chatHeader h4 {
   background-color: #eee !important;
-  color: #666 !important;
+  color: #414042 !important;
   margin: 0;
   padding-bottom: 5px;
 }
@@ -67,7 +67,7 @@
 
 .messageInput {
   background-color: #eee !important;
-  color: #666 !important;
+  color: #414042 !important;
   width: 100%;
 }
 
@@ -84,7 +84,8 @@
   font-weight: 600;
 }
 
-.backdrop {
+.backdrop,
+.topicBackdrop {
   background-color: rgba(0, 0, 0, 0.5);
   display: none;
   height: 100%;
@@ -95,7 +96,7 @@
   z-index: 10;
 }
 
-.renameModal {
+.modal {
   animation-duration: 0.6s;
   animation-name: slideIn;
   background-color: #eee;
@@ -108,6 +109,7 @@
   width: 40%;
 }
 
+.topicInput,
 .userNameInput {
   margin-right: 20px !important;
   width: 100%;
@@ -130,7 +132,24 @@
   width: 100%;
 }
 
+.footerItemsWrapper {
+  display: flex;
+  width: 100%;
+}
+
 .noChats {
   font-style: italic;
   text-align: center;
+}
+
+.topicTitle span {
+  font-size: 0.75rem;
+}
+
+.newTopicButton {
+  padding: 0;
+}
+
+.topics {
+  padding: 0 20px !important;
 }

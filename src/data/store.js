@@ -2,7 +2,10 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import io from 'socket.io-client';
 
-import { postMessage } from './actions';
+import {
+  addChannel,
+  postMessage,
+} from './actions';
 import reducer from './reducers';
 
 const logger = (store) => (next) => (action) => {
@@ -31,12 +34,29 @@ const configureStore = () => {
 
       updateChat(userName, id, message, topicId);
     });
+
+    socket.on('new topic', topic => {
+      let {
+        id,
+        name,
+      } = topic;
+
+      addNewTopic(id, name);
+    });
   }
 
   return createStore(reducer, applyMiddleware(logger, thunk));
 };
 
 let store = configureStore();
+
+const addTopic = value => {
+  socket.emit('new topic', value);
+}
+
+const addNewTopic = (id, name) => {
+  store.dispatch(addChannel(id, name));
+}
 
 const sendMessage = (value) => {
   socket.emit('chat message', value);
@@ -47,6 +67,7 @@ const updateChat = (userName, id, message, topicId) => {
 };
 
 export {
-  store,
+  addTopic,
   sendMessage,
+  store,
 };
